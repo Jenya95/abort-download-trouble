@@ -15,9 +15,6 @@
     <properties>
         <java.version>14</java.version>
         <product.port>7022</product.port>
-        <docker.registry>artifactory.mavenir.com</docker.registry>
-        <product.hubrepo>ngn-pcaa-k8s-docker-eng</product.hubrepo>
-        <product.network>pcaa-network</product.network>
 
         <infrastructure.components.version>1.4.2-48</infrastructure.components.version>
         <common.component.version>1.5.1-75</common.component.version>
@@ -135,12 +132,6 @@
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <excludes>
-                        <exclude>com/mavenir/**/model/**/*</exclude>
-                        <exclude>com/mavenir/**/config/**/*</exclude>
-                    </excludes>
-                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -160,12 +151,7 @@
             </plugin>
         </plugins>
     </reporting>
-    <repositories>
-        <repository>
-            <id>artifactory-mavenir</id>
-            <url>https://artifactory.mavenir.com/artifactory/ngn-pcaa-maven-release</url>
-        </repository>
-    </repositories>
+
     <pluginRepositories>
         <pluginRepository>
             <id>oss.sonatype.org-snapshot</id>
@@ -253,6 +239,4 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <name>pcaa-pcs-service</name>
 </project>
