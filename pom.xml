@@ -8,23 +8,8 @@
     <artifactId>zip-troubles</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-
-    <scm>
-        <connection>scm:git:${git.url}</connection>
-    </scm>
     <properties>
         <java.version>14</java.version>
-        <product.port>7022</product.port>
-
-        <infrastructure.components.version>1.4.2-48</infrastructure.components.version>
-        <common.component.version>1.5.1-75</common.component.version>
-
-        <scm.username/>
-        <scm.password/>
-        <git.url>unknown</git.url>
-        <build.version>SNAPSHOT</build.version>
-        <branch>null</branch>
-        <commit>null</commit>
         <application.version>${project.version}</application.version>
     </properties>
     <parent>
@@ -32,36 +17,6 @@
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.2.6.RELEASE</version>
     </parent>
-    <profiles>
-        <profile>
-            <id>prod</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <!--
-                    We need it because there is no if-else operators in maven, and Dockerfile has no if-else
-                    and jvm crashed when JAVA_TOOL_OPTIONS is not valid (space or empty)
-                    and we cannot delete it because we want to build debugable image in debug profile
-                -->
-                <debug.arg>-Ddummy.property=true</debug.arg>
-                <debug.port>${product.port}</debug.port>
-            </properties>
-        </profile>
-        <profile>
-            <id>debug</id>
-            <activation>
-                <property>
-                    <name>dockerDebug</name>
-                    <value>true</value>
-                </property>
-            </activation>
-            <properties>
-                <debug.port>5005</debug.port>
-                <debug.arg>-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=${debug.port}</debug.arg>
-            </properties>
-        </profile>
-    </profiles>
     <build>
         <plugins>
             <plugin>
