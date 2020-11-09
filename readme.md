@@ -10,6 +10,6 @@ How to reproduce the bug:
     
 3. Until end of this request abort it with Ctrl+C
 
-4. Do it again. In log you will see
+4. Do curl request from step 2 again. In log you will see
 
     `CoyoteAdapter     : Encountered a non-recycled response and recycled it forcedly`
